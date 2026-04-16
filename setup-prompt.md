@@ -1,5 +1,12 @@
 # Set up my personal wiki
 
+**Reference repo:** https://github.com/alexnix300/claude-wiki
+
+Before you begin, fetch the latest version of this repo. Read the `setup-prompt.md`,
+`README.md`, `docs/`, and `examples/` to get the most up-to-date structure,
+conventions, skill definitions, and config patterns. Use what you find there as
+the ground truth — if anything below conflicts with the repo, the repo wins.
+
 I want you to set up a personal knowledge base (wiki) that you will build and
 maintain for me. Here's how it works:
 
