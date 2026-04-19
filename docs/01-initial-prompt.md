@@ -28,6 +28,13 @@ Copy and paste this entire block into Claude Code:
 ````
 # Set up my personal wiki
 
+**Reference repo:** https://github.com/alexnix300/claude-wiki
+
+Before you begin, fetch the latest version of this repo. Read the `setup-prompt.md`,
+`README.md`, `docs/`, and `examples/` to get the most up-to-date structure,
+conventions, skill definitions, and config patterns. Use what you find there as
+the ground truth — if anything below conflicts with the repo, the repo wins.
+
 I want you to set up a personal knowledge base (wiki) that you will build and
 maintain for me. Here's how it works:
 
@@ -148,7 +155,55 @@ Also ask me during initial setup:
   communication, hosting, etc.)
 - Any strong preferences? (tabs vs spaces, dark mode, specific frameworks, etc.)
 
-### 6. Show me how to use it
+### 6. Ask me about agent personality
+
+Ask me 3 quick questions about how I want you to communicate:
+
+1. **Tone**: casual / professional / direct no-nonsense / other
+2. **Verbosity**: concise / balanced / detailed
+3. **Proactivity**: just do it / ask first / ask for anything non-obvious
+
+Save answers to `wiki/personal/agent-personality.md` with these sections:
+Tone, Verbosity, Proactivity, Additional guidelines.
+
+Going forward, whenever I give you feedback on communication style
+("be more concise", "stop apologizing", "no emoji", "less hedging"),
+add the rule to the "Additional guidelines" section so it persists across
+sessions. The file is a contract I've set for how you should behave — it
+wins over default behavior.
+
+Add instructions to the global `~/.claude/CLAUDE.md` to:
+- Read this file at every session start
+- Apply its guidelines throughout the session
+- Update it when I give communication feedback
+
+### 7. Set up user profile / interaction memory
+
+Create `wiki/personal/user-profile.md` with these empty sections:
+- Recurring needs (what I ask about most)
+- Working patterns (time of day, session style)
+- Communication style (direct, exploratory, technical, casual)
+- Domain expertise (where I'm expert vs learning)
+- Interests (topics I return to)
+
+Over time, fill this in silently based on patterns you observe across
+sessions. **Be conservative:**
+- Only record patterns observed **2+ times**
+- Update in place — overwrite, don't accumulate history
+- No speculation, no armchair psychology, no trait inferences beyond
+  observable behavior
+- If I correct you ("I don't usually..."), update immediately
+
+Use what you learn to adapt how you communicate with me — but don't
+reference the profile explicitly unless I ask. It should shape behavior
+silently.
+
+Add instructions to the global `~/.claude/CLAUDE.md` to:
+- Read this file at every session start to inform how to communicate with me
+- Update it conservatively as patterns emerge
+- Keep it factual and useful, not invasive
+
+### 8. Show me how to use it
 
 After setup, explain in plain language:
 - How to add a source (drop a file in raw/ and tell you to process it, or just
@@ -197,7 +252,7 @@ Content with [[wikilinks]] to other pages.
 
 The agent will:
 
-1. **Ask 3-5 simple questions** about your use case, what you want to track, where to put the wiki, and what tools you use. These are plain-language questions with multiple-choice options — no technical knowledge needed.
+1. **Ask 6-8 simple questions** about your use case, what to track, where to put the wiki, what tools you use, and how you want the agent to communicate. Plain-language, multiple-choice — no technical knowledge needed.
 
 2. **Build everything automatically:**
    - Creates the vault directory with all subdirectories
@@ -205,8 +260,10 @@ The agent will:
    - Creates index.md and log.md
    - Initializes git
    - Creates the global config (~/.claude/CLAUDE.md) so the wiki works across all future sessions
-   - Creates 5 slash commands: `/ingest`, `/wiki-status`, `/lint-wiki`, `/wiki-query`, `/wiki-save`
+   - Creates 5 slash commands: `/ingest`, `/wiki-status`, `/lint-wiki`, `/wiki`, `/wiki-save`
    - Creates a tools & preferences page pre-populated with what you told it
+   - Creates an agent-personality page with your communication preferences
+   - Creates a user-profile page (empty, fills in silently over time)
    - Creates a custom skills tracker
 
 3. **Explain how to use it** in plain language — slash commands, Obsidian browsing, and what happens automatically each session.
