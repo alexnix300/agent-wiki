@@ -35,7 +35,7 @@ See [`examples/README.md`](examples/README.md) for the full feature matrix and k
 ### Setup (2 minutes)
 
 1. Open Claude Code
-2. Copy the contents of [`setup-prompt.md`](setup-prompt.md) and paste it into Claude Code
+2. Copy the contents of [`setup-prompt.md`](setup-prompt.md) and paste it into Claude Code (Russian, extended v2: [`setup-prompt-v2.ru.md`](setup-prompt-v2.ru.md))
 3. Answer the questions (plain language, multiple choice)
 4. Open the created folder in Obsidian
 5. Done
